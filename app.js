@@ -15,8 +15,15 @@ const app = express();
 app.use(express.json());
 
 // Enable CORS
-app.use(cors());
-
+app.use(
+  cors({
+    origin: [
+      "https://expense-tracker-frontend-eight-sable.vercel.app",
+      "http://localhost:3000",
+    ],
+    credentials: true,
+  })
+);
 // Routes
 app.use("/api/expenses", require("./routes/expenses"));
 
